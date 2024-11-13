@@ -13,8 +13,6 @@ const initialState = {
   outOfStock: 0,
   category: [],
 };
-
-// Create New Product
 export const createProduct = createAsyncThunk(
   "products/create",
   async (formData, thunkAPI) => {
@@ -32,8 +30,6 @@ export const createProduct = createAsyncThunk(
     }
   }
 );
-
-// Get all products
 export const getProducts = createAsyncThunk(
   "products/getAll",
   async (_, thunkAPI) => {
@@ -51,8 +47,6 @@ export const getProducts = createAsyncThunk(
     }
   }
 );
-
-// Delete a Product
 export const deleteProduct = createAsyncThunk(
   "products/delete",
   async (id, thunkAPI) => {
@@ -89,7 +83,6 @@ export const getProduct = createAsyncThunk(
     }
   }
 );
-// Update product
 export const updateProduct = createAsyncThunk(
   "products/updateProduct",
   async ({ id, formData }, thunkAPI) => {
