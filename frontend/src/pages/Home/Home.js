@@ -81,10 +81,7 @@ const Home = () => {
               </button>
             </div>
 
-            <div className="trust-indicators">
-              <NumberText num="23K+" text="Active Users" />
-              <NumberText num="500+" text="Orgs" />
-            </div>
+      
           </div>
 
           <div className="hero-visual">
