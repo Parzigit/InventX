@@ -11,20 +11,17 @@ const Home = () => {
       <nav className="navbar">
         <div className="nav-container">
           <div className="logo">
-            <img src={logo || "/placeholder.svg"} alt="logo" height={50} />
-            <span className="logo-text">Invente X</span>
+            <img src={logo || "/placeholder.svg"} alt="logo" height={40} />
+            <span className="logo-text">InventX</span>
           </div>
 
           <ul className="nav-links">
             <li>
-              <a href="/dashboard">Features</a>
+              <a href="/dashboard"><div style={{color:'blue'}}>Features</div></a>
             </li>
-            <li>
-              <a href="#benefits">Benefits</a>
-            </li>
-            <li>
+            {/* <li>
               <a href="#pricing">Pricing</a>
-            </li>
+            </li> */}
             <ShowOnLogout>
               <li>
                 <Link to="/register" className="nav-link">
@@ -65,10 +62,9 @@ const Home = () => {
             </h1>
 
             <p className="hero-description">
-              Streamline your warehouse operations with our comprehensive management system. Control and manage products
-              in real-time with integrated analytics to accelerate your business growth and operational efficiency.
+              Streamline your warehouse operations with our comprehensive management system. Control and manage products.
             </p>
-
+            <ShowOnLogout>
             <div className="hero-actions">
               <button className="btn btn-primary btn-large">
                 <Link to="/login">
@@ -76,12 +72,29 @@ const Home = () => {
                   <span className="btn-icon">→</span>
                 </Link>
               </button>
-              <button className="btn btn-secondary btn-large">
+              {/* <button className="btn btn-secondary btn-large">
                 <Link to="/demo">Watch Demo</Link>
-              </button>
+              </button> */}
             </div>
-
-      
+          </ShowOnLogout>
+          <ShowOnLogin>
+          <div className="hero-actions">
+              <button className="btn btn-primary btn-large">
+                <Link to="/dashboard">
+                  Continue
+                  <span className="btn-icon">→</span>
+                </Link>
+              </button>
+              {/* <button className="btn btn-secondary btn-large">
+                <Link to="/demo">Watch Demo</Link>
+              </button> */}
+            </div>
+          </ShowOnLogin>
+{/* 
+            <div className="trust-indicators">
+              <NumberText num="23K+" text="Active Users" />
+              <NumberText num="500+" text="Orgs" />
+            </div> */}
           </div>
 
           <div className="hero-visual">
