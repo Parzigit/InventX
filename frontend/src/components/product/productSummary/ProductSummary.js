@@ -14,13 +14,11 @@ import {
   selectTotalStoreValue,
 } from "../../../redux/features/product/productSlice";
 
-// Icons
-const earningIcon = <AiFillDollarCircle size={40} color="#fff" />;
-const productIcon = <BsCart4 size={40} color="#fff" />;
-const categoryIcon = <BiCategory size={40} color="#fff" />;
-const outOfStockIcon = <BsCartX size={40} color="#fff" />;
+const moni = <AiFillDollarCircle size={35}/>;
+const prodIcon = <BsCart4 size={35}  />;
+const catIcon = <BiCategory size={35} />;
+const oopsIcon = <BsCartX size={35}  />;
 
-// Format Amount
 export const formatNumbers = (x) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
@@ -39,28 +37,28 @@ const ProductSummary = ({ products }) => {
 
   return (
     <div className="product-summary">
-      <h3 className="--mt">WareHouse Stats</h3>
+      <h3 className="--mt">Summary</h3>
       <div className="info-summary">
         <InfoBox
-          icon={productIcon}
+          icon={prodIcon}
           title={"Total Products"}
           count={products.length}
           bgColor="card1"
         />
         <InfoBox
-          icon={earningIcon}
+          icon={moni}
           title={"Total Store Value"}
           count={`$${formatNumbers(totalStoreValue.toFixed(2))}  `}
           bgColor="card2"
         />
         <InfoBox
-          icon={outOfStockIcon}
+          icon={oopsIcon}
           title={"Out of Stock"}
           count={outOfStock}
           bgColor="card3"
         />
         <InfoBox
-          icon={categoryIcon}
+          icon={catIcon}
           title={"All Categories"}
           count={category.length}
           bgColor="card4"
