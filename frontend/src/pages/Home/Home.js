@@ -61,15 +61,15 @@ const Home = () => {
               <span className="gradient-text"> Management Solution</span>
             </h1>
 
-            <p className="hero-description">
+            {/* <p className="hero-description">
               Streamline your warehouse operations with our comprehensive management system. Control and manage products.
-            </p>
+            </p> */}
             <ShowOnLogout>
             <div className="hero-actions">
               <button className="btn btn-primary btn-large">
                 <Link to="/login">
-                  Get Started Free
-                  <span className="btn-icon">→</span>
+                  Get Started
+                  {/* <span className="btn-icon">→</span> */}
                 </Link>
               </button>
               {/* <button className="btn btn-secondary btn-large">
@@ -120,13 +120,13 @@ const Home = () => {
             />
             <FeatureCard
               // icon="🔒"
-              title="Security & Compliance"
+              title="Security"
               description="Enterprise-grade security with full audit trails and compliance features."
             />
             <FeatureCard
               // icon="⚡"
               title="Automation"
-              description="Automate routine tasks and workflows to increase operational efficiency."
+              description="Increase operational efficiency."
             />
           </div>
         </div>
@@ -157,14 +157,14 @@ const Home = () => {
           <div className="cta-content">
             <h2>Ready to Transform Your Warehouse Operations?</h2>
             <p>Join thousands of businesses already using our platform to optimize their warehouse management.</p>
-            <div className="cta-actions">
-              <button className="btn btn-primary btn-large">
-                <Link to="/login">Start Free Trial</Link>
-              </button>
-              <button className="btn btn-outline btn-large">
-                <Link to="/contact">Contact Sales</Link>
-              </button>
-            </div>
+            {/* // <div className="cta-actions">
+            //   <button className="btn btn-primary btn-large">
+            //     <Link to="/login">Start Free Trial</Link>
+            //   </button>
+            //   <button className="btn btn-outline btn-large">
+            //     <Link to="/contact">Contact Sales</Link>
+            //   </button>
+            // </div> */}
           </div>
         </div>
       </section>
