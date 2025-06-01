@@ -1,38 +1,41 @@
-import React, { useState } from "react";
-import "./Sidebar.scss";
-import { HiMenuAlt3 } from "react-icons/hi";
-import { RiProductHuntLine } from "react-icons/ri";
-import menu from "../../data/sidebar";
-import SidebarItem from "./SidebarItem";
-import { useNavigate } from "react-router-dom";
+"use client"
+import { useState } from "react"
+import "./Sidebar.scss"
+import { HiMenuAlt3 } from "react-icons/hi"
+import logo from "../../assets/log.png"
+import menu from "../../data/sidebar"
+import SidebarItem from "./SidebarItem"
+import { useNavigate } from "react-router-dom"
 
 const Sidebar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(true);
-  const toggle = () => setIsOpen(!isOpen);
-  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(true)
+  const toggle = () => setIsOpen(!isOpen)
+  // const navigate = useNavigate()
 
-  const goHome = () => {
-    navigate("/");
-  };
+  // const goHome = () => {
+  //   navigate("/")
+  // }
 
   return (
     <div className="layout">
-      <div className="sidebar" style={{ width: isOpen ? "230px" : "60px" }}>
+      <div className="sidebar" style={{ width: isOpen ? "230px" : "70px" }}>
         <div className="top_section">
-          <div className="logo" style={{ display: isOpen ? "block" : "none" }}>
-            <RiProductHuntLine
+          <div className="logo" style={{ display: isOpen ? "block" : "20px" }}>
+          {/* <HiMenuAlt3 onClick=/> */}
+          <img src={logo || "/placeholder.svg"} alt="logo" 
+              paddingtop={1}
               size={35}
               style={{ cursor: "pointer" }}
-              onClick={goHome}
+              onClick={toggle} 
             />
           </div>
-
+          {/* 
           <div
             className="bars"
-            style={{ marginLeft: isOpen ? "100px" : "0px" }}
+            style={{ marginLeft: isOpen ? "120px" : "120px" }}
           >
-            <HiMenuAlt3 onClick={toggle} />
-          </div>
+            
+          </div> */}
         </div>
         {menu.map((item, index) => {
           return <SidebarItem key={index} item={item} isOpen={isOpen} />;
@@ -41,14 +44,16 @@ const Sidebar = ({ children }) => {
 
       <main
         style={{
-          paddingLeft: isOpen ? "230px" : "60px",
-          transition: "all .5s",
+          paddingLeft: isOpen ? "280px" : "140px",
+          transition: "all .8s",
         }}
       >
         {children}
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar
+
+
