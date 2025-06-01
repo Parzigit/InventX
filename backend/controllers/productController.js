@@ -2,35 +2,37 @@ const asyncHandler = require("express-async-handler");
 const Product = require("../models/productModel");
 const { fileSizeFormatter } = require("../utils/fileUpload");
 const cloudinary = require("cloudinary").v2;
+//cloudinary for handling image uploads
 const createProduct = asyncHandler(async (req, res) => {
-  const { name, sku, category, quantity, price, description } = req.body;
+  const { name, cat, category, quantity, price, description } = req.body;
   if (!name || !category || !quantity || !price || !description) {
     res.status(400);
-    throw new Error("Please fill in all fields");
+    throw new Error("Error filling required fields");
   }
   let fileData = {};
   if (req.file) {
     let uploadedFile;
     try {
       uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-        folder: "/",
+        folder: "InventX",
         resource_type: "image",
       });
     } catch (error) {
       res.status(500);
-      throw new Error("Image could not be uploaded");
+      throw new Error("Image couldn't be uploaded");
     }
+
     fileData = {
       fileName: req.file.originalname,
       filePath: uploadedFile.secure_url,
       fileType: req.file.mimetype,
-      fileSize: fileSizeFormatter(req.file.size, 2),
+      fileSize: fileSizeFormatter(req.file.size, 10),
     };
   }
   const product = await Product.create({
     user: req.user.id,
     name,
-    sku,
+    cat,
     category,
     quantity,
     price,
@@ -40,15 +42,17 @@ const createProduct = asyncHandler(async (req, res) => {
 
   res.status(201).json(product);
 });
+
 const getProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({ user: req.user.id }).sort("-createdAt");
   res.status(200).json(products);
 });
+
 const getProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (!product) {
     res.status(404);
-    throw new Error("Error finding the product");
+    throw new Error("Product not found");
   }
   if (product.user.toString() !== req.user.id) {
     res.status(401);
@@ -60,7 +64,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (!product) {
     res.status(404);
-    throw new Error("Error finding the product"");
+    throw new Error("Product not found");
   }
   if (product.user.toString() !== req.user.id) {
     res.status(401);
@@ -72,6 +76,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 const updateProduct = asyncHandler(async (req, res) => {
   const { name, category, quantity, price, description } = req.body;
   const { id } = req.params;
+
   const product = await Product.findById(id);
   if (!product) {
     res.status(404);
@@ -81,6 +86,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     res.status(401);
     throw new Error("User not authorized");
   }
+
   let fileData = {};
   if (req.file) {
     let uploadedFile;
@@ -101,6 +107,7 @@ const updateProduct = asyncHandler(async (req, res) => {
       fileSize: fileSizeFormatter(req.file.size, 2),
     };
   }
+
   const updatedProduct = await Product.findByIdAndUpdate(
     { _id: id },
     {
