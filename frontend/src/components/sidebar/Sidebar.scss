@@ -1,7 +1,7 @@
 // Variables matching the landing page
 :root {
-  --sidebar-width-open: 280px;
-  --sidebar-width-closed: 70px;
+  --sidebar-width-open: 350px;
+  --sidebar-width-closed: 150px;
   --sidebar-bg: #ffffff;
   --sidebar-border: #e2e8f0;
   --sidebar-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -49,7 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 1rem;
+  padding: 2.5rem 1rem;
   border-bottom: 1px solid var(--sidebar-border);
   background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
   color: white;
@@ -59,22 +59,23 @@
 .logo-section {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1.5rem;
   transition: var(--transition);
   cursor: pointer;
   
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.8);
   }
 }
 
 .logo-image {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 12px;
   object-fit: contain;
   background: rgba(255, 255, 255, 0.1);
-  padding: 4px;
+  padding: 12px;
+  padding-top: 5px;
 }
 
 .logo-text {
@@ -88,8 +89,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.1);
   cursor: pointer;
@@ -97,7 +98,7 @@
   
   &:hover {
     background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
+    transform: scale(1.15);
   }
 }
 
@@ -113,7 +114,7 @@
   overflow-x: hidden;
   
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 2px;
   }
   
   &::-webkit-scrollbar-track {
@@ -190,9 +191,9 @@
 
 // Sidebar Items Styling
 .sidebar-item {
-  margin-bottom: 0.25rem;
-  border-radius: 12px;
-  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border-radius: 18px;
+  overflow:visible;
   transition: var(--transition);
   
   &:hover {
@@ -211,7 +212,7 @@
     &::after {
       content: "";
       position: absolute;
-      right: 0;
+      right:auto;
       top: 0;
       bottom: 0;
       width: 3px;
@@ -227,8 +228,8 @@
   justify-content: space-between;
   padding: 0.875rem 1rem;
   color: var(--text-primary);
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.6rem;
+  font-weight: 4550;
   transition: var(--transition);
   cursor: pointer;
   position: relative;
@@ -236,7 +237,7 @@
   span {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     min-width: 0;
     
     .icon {
@@ -254,7 +255,7 @@
       justify-content: center;
       
       .icon {
-        margin: 0;
+        margin: 2;
       }
     }
   }
@@ -275,7 +276,7 @@
 }
 
 .sidebar-content-items {
-  padding: 0.5rem 0;
+  padding: 0.8rem 0;
   background: var(--background-secondary);
   border-radius: 0 0 12px 12px;
   margin-top: 0.25rem;
@@ -286,7 +287,7 @@
     
     .sidebar-title {
       padding: 0.5rem 1rem;
-      font-size: 0.8125rem;
+      font-size: 1.825rem;
       
       span .icon {
         width: 16px;
@@ -298,7 +299,7 @@
 }
 
 .main-content {
-  flex: 1;
+  flex:5rem;
   transition: var(--transition);
   background: var(--background-secondary);
   
@@ -312,7 +313,7 @@
 }
 
 .content-wrapper {
-  padding: 2rem;
+  padding: 4rem;
   min-height: 100vh;
   background: var(--background-secondary);
 }
@@ -337,10 +338,11 @@ a {
   .main-content {
     &.main-expanded {
       margin-left: 0.5rem;
+      border-radius: 5px;
     }
     
     &.main-collapsed {
-      margin-left: 0.5rem;
+      margin-left: 1.5rem;
     }
   }
 }
@@ -348,8 +350,8 @@ a {
 @media (max-width: 768px) {
   .sidebar {
     &.sidebar-open {
-      width: 120vw;
-      max-width: 320px;
+      width: 380vw;
+      max-width: 380px;
     }
   }
   
@@ -373,7 +375,7 @@ a {
     &:hover::after {
       content: attr(data-tooltip);
       position: absolute;
-      left: calc(100% + 2rem);
+      left: calc(100% + 4rem);
       top: 50%;
       transform: translateY(-30%);
       background: var(--text-primary);
