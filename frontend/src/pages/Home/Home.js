@@ -171,14 +171,14 @@ const Home = () => {
     </div>
   )
 }
-const BenefitCard = ({ icon, text }) => {
-  return (
-    <div className="benefit-card">
-      <div className="benefit-icon">{icon}</div>
-      <p>{text}</p>
-    </div>
-  )
-}
+// const BenefitCard = ({ icon, text }) => {
+//   return (
+//     <div className="benefit-card">
+//       <div className="benefit-icon">{icon}</div>
+//       <p>{text}</p>
+//     </div>
+//   )
+// }
 const FeatureCard = ({ icon, title, description }) => {
   return (
     <div className="feature-card">
@@ -191,22 +191,22 @@ const FeatureCard = ({ icon, title, description }) => {
   )
 }
 
-const BenefitItem = ({ text }) => {
-  return (
-    <div className="benefit-item">
-      <span className="benefit-icon">✅</span>
-      <span>{text}</span>
-    </div>
-  )
-}
+// const BenefitItem = ({ text }) => {
+//   return (
+//     <div className="benefit-item">
+//       <span className="benefit-icon">✅</span>
+//       <span>{text}</span>
+//     </div>
+//   )
+// }
 
-const NumberText = ({ num, text }) => {
-  return (
-    <div className="trust-item">
-      <div className="trust-number">{num}</div>
-      <div className="trust-label">{text}</div>
-    </div>
-  )
-}
+// const NumberText = ({ num, text }) => {
+//   return (
+//     <div className="trust-item">
+//       <div className="trust-number">{num}</div>
+//       <div className="trust-label">{text}</div>
+//     </div>
+//   )
+// }
 
 export default Home
