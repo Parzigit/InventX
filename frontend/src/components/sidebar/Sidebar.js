@@ -20,7 +20,7 @@ const Sidebar = ({ children }) => {
     <div className="layout">
       <div className="sidebar" style={{ width: isOpen ? "230px" : "70px" }}>
         <div className="top_section">
-          <div className="logo" style={{ display: isOpen ? "block" : "20px" }}>
+          <div className="logo" style={{ display: isOpen ? "block" : "inline" }&&{marginLeft:isOpen?"60px":"-5px"}}>
           {/* <HiMenuAlt3 onClick=/> */}
           <img src={logo || "/placeholder.svg"} alt="logo" 
               paddingtop={1}
@@ -44,7 +44,7 @@ const Sidebar = ({ children }) => {
 
       <main
         style={{
-          paddingLeft: isOpen ? "280px" : "140px",
+          paddingLeft: isOpen ? "650px" : "250px",
           transition: "all .8s",
         }}
       >
