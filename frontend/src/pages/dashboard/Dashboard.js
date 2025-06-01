@@ -6,6 +6,7 @@ import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser"
 import { selectIsLoggedIn } from "../../redux/features/auth/authSlice";
 import { getProducts } from "../../redux/features/product/productSlice";
 
+import '../../index.css'
 const Dashboard = () => {
   useRedirectLoggedOutUser("/login");
   const dispatch = useDispatch();
