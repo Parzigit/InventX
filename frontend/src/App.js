@@ -20,8 +20,10 @@ import EditProduct from "./pages/editProduct/EditProduct";
 import Profile from "./pages/profile/Profile";
 import EditProfile from "./pages/profile/EditProfile";
 import Contact from "./pages/contact/Contact";
-
+import ChangePassword from "./components/changePassword/ChangePassword";
 axios.defaults.withCredentials = true;
+
+<Route path="/changePassword" element={<ChangePassword />} />
 
 function App() {
   const dispatch = useDispatch();
