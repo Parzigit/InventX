@@ -68,9 +68,9 @@ const Register = () => {
       <Card>
         <div className={styles.form}>
           <div className="--flex-center">
-            <TiUserAddOutline size={35} color="#999" />
+            <TiUserAddOutline size={45} color="#000" />
           </div>
-          <h2>Register</h2>
+          <h2><div style={{color:'blue'}}>Register</div></h2>
 
           <form onSubmit={register}>
             <input
