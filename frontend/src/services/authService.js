@@ -8,8 +8,6 @@ export const validateEmail = (email) => {
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
 };
-
-// Register User
 export const registerUser = async (userData) => {
   try {
     const response = await axios.post(
@@ -29,8 +27,6 @@ export const registerUser = async (userData) => {
     toast.error(message);
   }
 };
-
-// Login User
 export const loginUser = async (userData) => {
   try {
     const response = await axios.post(
@@ -49,8 +45,6 @@ export const loginUser = async (userData) => {
     toast.error(message);
   }
 };
-
-// Logout User
 export const logoutUser = async () => {
   try {
     await axios.get(`${BACKEND_URL}/api/users/logout`);
@@ -62,8 +56,6 @@ export const logoutUser = async () => {
     toast.error(message);
   }
 };
-
-// Forgot Password
 export const forgotPassword = async (userData) => {
   try {
     const response = await axios.post(
@@ -79,8 +71,6 @@ export const forgotPassword = async (userData) => {
     toast.error(message);
   }
 };
-
-// Reset Password
 export const resetPassword = async (userData, resetToken) => {
   try {
     const response = await axios.put(
@@ -96,8 +86,6 @@ export const resetPassword = async (userData, resetToken) => {
     toast.error(message);
   }
 };
-
-// Get Login Status
 export const getLoginStatus = async () => {
   try {
     const response = await axios.get(`${BACKEND_URL}/api/users/loggedin`);
@@ -110,7 +98,6 @@ export const getLoginStatus = async () => {
     toast.error(message);
   }
 };
-// Get User Profile
 export const getUser = async () => {
   try {
     const response = await axios.get(`${BACKEND_URL}/api/users/getuser`);
@@ -123,7 +110,6 @@ export const getUser = async () => {
     toast.error(message);
   }
 };
-// Update Profile
 export const updateUser = async (formData) => {
   try {
     const response = await axios.patch(
@@ -139,7 +125,6 @@ export const updateUser = async (formData) => {
     toast.error(message);
   }
 };
-// Update Profile
 export const changePassword = async (formData) => {
   try {
     const response = await axios.patch(
