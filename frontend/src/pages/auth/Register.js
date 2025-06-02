@@ -52,10 +52,10 @@ const Register = () => {
     setIsLoading(true);
     try {
       const data = await registerUser(userData);
-      // console.log(data);
+      console.log(data);
       await dispatch(SET_LOGIN(true));
       await dispatch(SET_NAME(data.name));
-      navigate("/dashboard");
+      navigate("/profile");
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -113,7 +113,7 @@ const Register = () => {
           <span className={styles.register}>
             <Link to="/">Home</Link>
             <p> &nbsp; Already have an account? &nbsp;</p>
-            <Link to="/login">Login</Link>
+            <Link to="/login"><div style={{color:'red'}}>Login</div></Link>
           </span>
         </div>
       </Card>
