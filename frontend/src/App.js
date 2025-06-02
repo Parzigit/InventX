@@ -23,7 +23,7 @@ import Contact from "./pages/contact/Contact";
 import ChangePassword from "./components/changePassword/ChangePassword";
 axios.defaults.withCredentials = true;
 
-<Route path="/changePassword" element={<ChangePassword />} />
+// {/* <Route path="/changepassword" element={<ChangePassword />} /> */}
 
 function App() {
   const dispatch = useDispatch();
@@ -52,6 +52,16 @@ function App() {
             <Sidebar>
               <Layout>
                 <Dashboard />
+              </Layout>
+            </Sidebar>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <Sidebar>
+              <Layout>
+                <Home />
               </Layout>
             </Sidebar>
           }
@@ -116,8 +126,20 @@ function App() {
             </Sidebar>
           }
         />
+        <Route
+          path="/change-password"
+          element={
+            <Sidebar>
+              <Layout>
+                <ChangePassword />
+              </Layout>
+            </Sidebar>
+          }
+        />
       </Routes>
+      
     </BrowserRouter>
+
   );
 }
 
