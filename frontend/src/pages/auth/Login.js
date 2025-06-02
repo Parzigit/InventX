@@ -60,7 +60,7 @@ const Login = () => {
       <Card>
         <div className={styles.form}>
           <div className="--flex-center">
-            <BiLogIn size={35} color="#999" />
+            <BiLogIn size={45} color="#000" />
           </div>
           <h2><div style={{color:'red'}}>Login</div></h2>
 
