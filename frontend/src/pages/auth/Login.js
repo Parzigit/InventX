@@ -62,7 +62,7 @@ const Login = () => {
           <div className="--flex-center">
             <BiLogIn size={35} color="#999" />
           </div>
-          <h2>Login</h2>
+          <h2><div style={{color:'red'}}>Login</div></h2>
 
           <form onSubmit={login}>
             <input
