@@ -1,16 +1,15 @@
-import React from "react";
-import "./InfoBox.scss";
+import "./InfoBox.scss"
 
 const InfoBox = ({ bgColor, title, count, icon }) => {
   return (
     <div className={`info-box ${bgColor}`}>
-      <span className="info-icon --color-white">{icon}</span>
-      <span className="info-text">
+      <div className="info-icon">{icon}</div>
+      <div className="info-text">
         <p>{title}</p>
         <h4>{count}</h4>
-      </span>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default InfoBox;
+export default InfoBox
