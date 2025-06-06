@@ -1,9 +1,9 @@
-import React from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import Card from "../../card/Card";
+"use client"
 
-import "./ProductForm.scss";
+import { useState } from "react"
+import "./ProductForm.scss"
+import ReactQuill from "react-quill"
+import "react-quill/dist/quill.snow.css"
 
 const ProductForm = ({
   product,
@@ -15,120 +15,162 @@ const ProductForm = ({
   handleImageChange,
   saveProduct,
 }) => {
+  const [categories, setCategories] = useState([
+    "Electronics",
+    "Clothing",
+    "Books",
+    "Home & Garden",
+    "Sports",
+    "Automotive",
+    "Office Supplies",
+    "Toys & Games",
+    "Health & Beauty",
+    "Other",
+  ])
+
   return (
-    <div className="add-product">
-      <Card cardClass={"card"}>
-        <form onSubmit={saveProduct}>
-          <Card cardClass={"group"}>
-            <label>Product Image</label>
-            <code className="--color-dark">
-              Supported Formats: jpg, jpeg, png
-            </code>
-            <input
-              type="file"
-              name="image"
-              onChange={(e) => handleImageChange(e)}
-            />
-
-            {imagePreview != null ? (
+    <div className="product-form-wrapper">
+      <form onSubmit={saveProduct} className="product-form">
+        <div className="form-sections">
+          {/* Product Image Section */}
+          <div className="form-section image-section">
+            <h3 className="section-title">Product Image</h3>
+            <div className="image-upload-area">
               <div className="image-preview">
-                <img src={imagePreview} alt="product" />
+                {imagePreview ? (
+                  <img src={imagePreview || "/placeholder.svg"} alt="Product preview" className="preview-image" />
+                ) : (
+                  <div className="placeholder-image">
+                    {/* <span className="placeholder-icon">📷</span> */}
+                    <p>No image selected</p>
+                  </div>
+                )}
               </div>
-            ) : (
-              <p>No image set for this poduct.</p>
-            )}
-          </Card>
-          <label>Product Name:</label>
-          <input
-            type="text"
-            placeholder="Product name"
-            name="name"
-            value={product?.name}
-            onChange={handleInputChange}
-          />
-
-          <label>Product Category:</label>
-          <input
-            type="text"
-            placeholder="Product Category"
-            name="category"
-            value={product?.category}
-            onChange={handleInputChange}
-          />
-
-          <label>Product Price:</label>
-          <input
-            type="text"
-            placeholder="Product Price"
-            name="price"
-            value={product?.price}
-            onChange={handleInputChange}
-          />
-
-          <label>Product Quantity:</label>
-          <input
-            type="text"
-            placeholder="Product Quantity"
-            name="quantity"
-            value={product?.quantity}
-            onChange={handleInputChange}
-          />
-
-          <label>Product Description:</label>
-          <ReactQuill
-            theme="snow"
-            value={description}
-            onChange={setDescription}
-            modules={ProductForm.modules}
-            formats={ProductForm.formats}
-          />
-
-          <div className="--my">
-            <button type="submit" className="--btn --btn-primary">
-              Save Product
-            </button>
+              <div className="upload-controls">
+                <label htmlFor="product-image" className="upload-button">
+                  {/* <span className="btn-icon">📁</span> */}
+                  Choose Image
+                </label>
+                <input
+                  id="product-image"
+                  type="file"
+                  accept="image/*"
+                  name="image"
+                  onChange={handleImageChange}
+                  className="file-input"
+                />
+                <p className="upload-hint">Supported formats: JPG, PNG, JPEG</p>
+              </div>
+            </div>
           </div>
-        </form>
-      </Card>
+
+          {/* Product Details Section */}
+          <div className="form-section details-section">
+            <h3 className="section-title">Product Details</h3>
+            <div className="form-grid">
+              <div className="form-field">
+                <label className="field-label">
+                  {/* <span className="label-icon">🏷️</span> */}
+                  Product Name *
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={product?.name}
+                  onChange={handleInputChange}
+                  placeholder="Enter product name"
+                  className="form-input"
+                  required
+                />
+              </div>
+
+              <div className="form-field">
+                <label className="field-label">
+                  {/* <span className="label-icon">📂</span> */}
+                  Category *
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={product?.name}
+                  onChange={handleInputChange}
+                  placeholder="Category"
+                  className="form-input"
+                  required
+                />
+              </div>
+
+              <div className="form-field">
+                <label className="field-label">
+                  {/* <span className="label-icon">💰</span> */}
+                  Price *
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  value={product?.price}
+                  onChange={handleInputChange}
+                  placeholder="0.00"
+                  className="form-input"
+                  min="0"
+                  step="10"
+                  required
+                />
+              </div>
+
+              <div className="form-field">
+                <label className="field-label">
+                  {/* <span className="label-icon">📊</span> */}
+                  Quantity *
+                </label>
+                <input
+                  type="number"
+                  name="quantity"
+                  value={product?.quantity}
+                  onChange={handleInputChange}
+                  placeholder="0"
+                  className="form-input"
+                  min="0"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-field form-field-large">
+              <label className="field-label">
+                {/* <span className="label-icon">📝</span> */}
+                Product Description
+              </label>
+              <ReactQuill
+                theme="snow"
+                value={description}
+                onChange={setDescription}
+                modules={{
+                  toolbar: [
+                    [{ header: [1, 2, 3, false] }],
+                    ["bold", "italic", "underline", "strike"],
+                    [{ list: "ordered" }, { list: "bullet" }],
+                    ["link"],
+                    [{ color: [] }, { background: [] }],
+                    ["clean"],
+                  ],
+                }}
+                className="quill-editor"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Form Actions */}
+        <div className="form-actions">
+          <button type="submit" className="submit-button">
+            {/* <span className="btn-icon">💾</span> */}
+            Save Product
+          </button>
+        </div>
+      </form>
     </div>
-  );
-};
+  )
+}
 
-ProductForm.modules = {
-  toolbar: [
-    [{ header: "1" }, { header: "2" }, { font: [] }],
-    [{ size: [] }],
-    ["bold", "italic", "underline", "strike", "blockquote"],
-    [{ align: [] }],
-    [{ color: [] }, { background: [] }],
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" },
-    ],
-    ["clean"],
-  ],
-};
-ProductForm.formats = [
-  "header",
-  "font",
-  "size",
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "blockquote",
-  "color",
-  "background",
-  "list",
-  "bullet",
-  "indent",
-  "link",
-  "video",
-  "image",
-  "code-block",
-  "align",
-];
-
-export default ProductForm;
+export default ProductForm
