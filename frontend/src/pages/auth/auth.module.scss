@@ -1,93 +1,268 @@
+// Variables matching Microsoft's design
+:root {
+  --ms-blue: #0078d4;
+  --ms-blue-hover: #106ebe;
+  --ms-blue-active: #005a9e;
+  --ms-gray-50: #faf9f8;
+  --ms-gray-100: #f3f2f1;
+  --ms-gray-200: #edebe9;
+  --ms-gray-300: #e1dfdd;
+  --ms-gray-400: #d2d0ce;
+  --ms-gray-500: #c8c6c4;
+  --ms-gray-600: #a19f9d;
+  --ms-gray-700: #797775;
+  --ms-gray-800: #605e5c;
+  --ms-gray-900: #323130;
+  --text-primary: #323130;
+  --text-secondary: #605e5c;
+  --text-link: #0078d4;
+  --border-color: #d2d0ce;
+  --border-focus: #0078d4;
+  --background: #ffffff;
+  --shadow-card: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+  --shadow-hover: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .auth {
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: var(--ms-gray-50);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   .img {
-    animation: slide-down 0.5s ease;
-    width: 30rem;
-    height: 30rem;
-    border-radius: 50%;
-    // background: url("../../assets/images/auth.jpg") no-repeat center center;
-    background-size: cover;
+    display: none; // Hide the image for Microsoft-style clean look
   }
 
   .form {
-    font-family: "Poppins", sans-serif;
-    width: 35rem;
-    padding: 1.8rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 350px;
+    max-width: 800px;
+    padding: 0;
     border-radius: 16px;
-    animation: slide-up 0.3s ease;
-    background-color: #fff;
-    h2 {
-      color: var(--color-danger);
+    background: var(--background);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    transition: var(--transition);
+    animation: slide-up 0.5s ease;
+
+    &:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    // Header section with logo
+    &::before {
+      content: "";
+      display: block;
+      padding: 2rem 2rem 1rem;
+      // border-bottom: 1px solid var(--ms-gray-200);
+      background: var(--background);
       text-align: center;
     }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+      margin: 2rem 0 0.5rem;
+      padding: 0 2rem;
+    }
+
+    // Add subtitle after h2
+    h2 + * {
+      font-size: 1.375rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 0 2rem;
+    }
+
     form {
+      padding: 0 2rem 2rem;
+
       input[type="text"],
       input[type="email"],
       input[type="password"] {
         display: block;
-        font-size: 1.6rem;
-        font-weight: 150;
-        padding: 1.5rem;
-        margin: 2rem auto;
+        font-size: 1.45em;
+        font-weight: 400;
+        padding: 1.5rem 2rem;
+        margin: 0.8rem 0;
         width: 100%;
-        border: 1px solid #72706f;
-        // border-bottom: 3px solid #ccc;
-        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        border-radius: 2px;
         outline: none;
+        background: var(--background);
+        color: var(--text-primary);
+        transition: var(--transition);
+        font-family: inherit;
+
+        &::placeholder {
+          color: var(--text-secondary);
+        }
 
         &:focus {
           outline: none;
-          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-          border-bottom: 3px solid #72706f;
+          border-color: var(--border-focus);
+          box-shadow: 0 0 0 1px var(--border-focus);
+        }
+
+        &:hover:not(:focus) {
+          border-color: var(--ms-gray-600);
         }
 
         &:focus:invalid {
-          border-bottom: 2px solid #72706f;
+          border-color: #d13438;
+          box-shadow: 0 0 0 1px #d13438;
         }
       }
+
+      // Microsoft-style button
+      button[type="submit"],
+      .--btn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1.65rem;
+        font-weight: 480;
+        color: white;
+        background: var(--ms-blue);
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        transition: var(--transition);
+        margin: 1.8rem 0 0rem;
+        font-family: inherit;
+
+        &:hover:not(:disabled) {
+          background: var(--ms-blue-hover);
+        }
+
+        &:active:not(:disabled) {
+          background: var(--ms-blue-active);
+        }
+
+        &:disabled {
+          background: var(--ms-gray-400);
+          cursor: not-allowed;
+        }
+
+        &:focus {
+          outline: 2px solid var(--ms-blue);
+          outline-offset: 2px;
+        }
+      }
+
       .links {
         display: flex;
-        justify-content: space-between;
-        margin: 4px 0;
+        justify-content: center;
+        margin: 1rem 0;
+
+        a {
+          color: var(--text-link);
+          text-decoration: none;
+          font-size: 0.875rem;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
 
       p {
         text-align: center;
-        margin: 2rem;
+        margin: 1rem 0;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
       }
     }
+
     .register {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      padding: 0 2rem 2rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+
+      a {
+        color: var(--text-link);
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      p {
+        margin: 0;
+        color: var(--text-secondary);
+      }
     }
   }
 
   @keyframes slide-up {
     0% {
-      transform: translateY(-8rem);
+      transform: translateY(-2rem);
+      opacity: 0;
     }
     100% {
       transform: translateY(0);
-    }
-  }
-  @keyframes slide-down {
-    0% {
-      transform: translateY(5rem);
-    }
-    100% {
-      transform: translateY(0);
+      opacity: 1;
     }
   }
 }
 
+// Responsive design
 @media screen and (max-width: 700px) {
-  .img {
-    display: none;
+  .auth {
+    padding: 1rem 0.5rem;
+
+    .form {
+      max-width: 100%;
+      margin: 0;
+
+      h2 {
+        font-size: 1.75rem;
+        padding: 0 1.5rem;
+      }
+
+      form {
+        padding: 0 1.5rem 1.5rem;
+      }
+
+      .register {
+        padding: 0 1.5rem 1.5rem;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+    }
+  }
+}
+
+// High contrast support
+@media (prefers-contrast: high) {
+  .auth .form {
+    --border-color: #000000;
+    --text-secondary: #000000;
+    --ms-blue: #0000ff;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .auth .form {
+    animation: none;
+  }
+  
+  * {
+    transition: none !important;
   }
 }
