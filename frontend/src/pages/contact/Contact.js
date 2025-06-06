@@ -1,88 +1,67 @@
 import React, { useState } from "react";
+import styles from "./auth.module.scss";
+import { AiOutlineMail } from "react-icons/ai";
 import Card from "../../components/card/Card";
-import "./Contact.scss";
-import { FaPhoneAlt, FaEnvelope, FaInstagram } from "react-icons/fa";
-import { GoLocation } from "react-icons/go";
+import { Link } from "react-router-dom";
+import { forgotPassword, validateEmail } from "../../services/authService";
 import { toast } from "react-toastify";
-import axios from "axios";
-import { BACKEND_URL } from "../../services/authService";
 
-const Contact = () => {
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
-  const data = {
-    subject,
-    message,
-  };
+const Forgot = () => {
+  const [email, setEmail] = useState("");
 
-  const sendEmail = async (e) => {
+  const forgot = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(`${BACKEND_URL}/api/contactus`, data);
-      setSubject("");
-      setMessage("");
-      toast.success(response.data.message);
-    } catch (error) {
-      toast.error(error.message);
+    if (!email) {
+      return toast.error("Please enter an email");
     }
+
+    if (!validateEmail(email)) {
+      return toast.error("Please enter a valid email");
+    }
+
+    const userData = {
+      email,
+    };
+
+    await forgotPassword(userData);
+    setEmail("");
   };
 
   return (
-    <div className="contact">
-      <h3 className="--mt">Contact Us</h3>
-      <div className="section">
-        <form onSubmit={sendEmail}>
-          <Card cardClass="card">
-            <label>Subject</label>
+    <div className={`container ${styles.auth}`}>
+      <Card>
+        <div className={styles.form}>
+          <div className="--flex-center">
+            <AiOutlineMail size={35} color="#999" />
+          </div>
+          <h2>Forgot Password</h2>
+
+          <form onSubmit={forgot}>
             <input
-              type="text"
-              name="subject"
-              placeholder="Subject"
+              type="email"
+              placeholder="Email"
               required
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <label>Message</label>
-            <textarea
-              cols="30"
-              rows="10"
-              name="message"
-              required
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            ></textarea>
-            <button className="--btn --btn-primary">Send Message</button>
-          </Card>
-        </form>
 
-        <div className="details">
-          <Card cardClass={"card2"}>
-            <h3>Our Contact Information</h3>
-            <p>Fill the form or contact us via other channels listed below</p>
-
-            <div className="icons">
-              <span>
-                <FaPhoneAlt />
-                <p>+91 8XX124</p>
-              </span>
-              <span>
-                <FaEnvelope />
-                <p>Support@inventx.com</p>
-              </span>
-              <span>
-                <GoLocation />
-                <p>Atreya, Jabalpur</p>
-              </span>
-              <span>
-                <FaInstagram />
-                <p>@sumedh.atreya</p>
-              </span>
+            <button type="submit" className="--btn --btn-primary --btn-block">
+              Get Reset Email
+            </button>
+            <div className={styles.links}>
+              <p>
+                <Link to="/">- Home</Link>
+              </p>
+              <p>
+                <Link to="/login">- Login</Link>
+              </p>
             </div>
-          </Card>
+          </form>
         </div>
-      </div>
+      </Card>
     </div>
   );
 };
 
-export default Contact;
+export default Forgot;
