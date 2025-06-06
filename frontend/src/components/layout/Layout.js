@@ -1,5 +1,4 @@
 import React from "react";
-// import Footer from "../footer/Footer";
 import Header from "../header/Header";
 
 const Layout = ({ children }) => {
@@ -9,7 +8,6 @@ const Layout = ({ children }) => {
       <div style={{ minHeight: "20vh" ,minWidth:"75vh"}} className="--pad">
         {children}
       </div>
-      // <Footer />
     </>
   );
 };
