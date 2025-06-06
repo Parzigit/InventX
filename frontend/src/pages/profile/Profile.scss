@@ -1,4 +1,3 @@
-// Variables matching the main style
 :root {
   --primary-color: #2563eb;
   --primary-dark: #1d4ed8;
@@ -366,6 +365,7 @@
 
 .image-section,
 .form-section {
+  font-size: 0.875rem;
   padding: 2rem;
   border-bottom: 1px solid var(--border-color);
 }
@@ -456,6 +456,7 @@
 
 // Form Fields
 .form-grid {
+  font-size: 0.875rem;
   display:contents;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
@@ -463,6 +464,7 @@
 }
 
 .form-field {
+  
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -494,7 +496,7 @@
   padding: 0.875rem 1rem;
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   transition: var(--transition);
   background: var(--background);
   
@@ -608,6 +610,7 @@
   .profile-content,
   .edit-profile-content {
     padding: 0 1rem;
+    font-size: 0.65rem;
   }
   
   .header-content {
