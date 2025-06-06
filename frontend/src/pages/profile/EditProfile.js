@@ -9,7 +9,7 @@ import "./Profile.scss"
 import { toast } from "react-toastify"
 import { updateUser } from "../../services/authService"
 import ChangePassword from "../../components/changePassword/ChangePassword"
-
+import { Link } from "react-router-dom"
 const EditProfile = () => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
@@ -130,7 +130,7 @@ const EditProfile = () => {
                 </div>
                 <div className="upload-controls">
                   <label htmlFor="image-upload" className="upload-button">
-                    <span className="btn-icon">📁</span>
+                    {/* <span className="btn-icon">📁</span> */}
                     Choose New Photo
                   </label>
                   <input
@@ -152,7 +152,7 @@ const EditProfile = () => {
               <div className="form-grid">
                 <FormField
                   label="Full Name"
-                  icon="👤"
+                  // icon="👤"
                   type="text"
                   name="name"
                   value={profile?.name}
@@ -163,7 +163,7 @@ const EditProfile = () => {
 
                 <FormField
                   label="Email Address"
-                  icon="📧"
+                  // icon="📧"
                   type="email"
                   name="email"
                   value={profile?.email}
@@ -173,7 +173,7 @@ const EditProfile = () => {
 
                 <FormField
                   label="Phone Number"
-                  icon="📱"
+                  // icon="📱"
                   type="tel"
                   name="phone"
                   value={profile?.phone}
@@ -184,7 +184,7 @@ const EditProfile = () => {
 
               <FormField
                 label="Bio"
-                icon="📝"
+                // icon="📝"
                 type="textarea"
                 name="bio"
                 value={profile?.bio}
@@ -210,9 +210,28 @@ const EditProfile = () => {
         </div>
 
         {/* Change Password Section */}
-        <div className="password-section">
+        {/* <div className="password-section">
           <ChangePassword />
-        </div>
+        </div> */}
+
+         <div className="quick-actions">
+                <h3 className="actions-title">Quick Actions</h3>
+                <div className="actions-grid">
+                <ActionButton
+                  title="Change Password"
+                  description="Update your account password"
+                  link="/change-password"
+                />
+                  {/* <ActionButton
+                    icon="🔔"
+                    title="Notifications"
+                    description="Manage notification preferences"
+                    link="/notifications"
+                  /> */}
+                  {/* <ActionButton icon="🛡️" title="Security" description="Review security settings" link="/security" /> */}
+                  {/* <ActionButton icon="📊" title="Activity Log" description="View account activity" link="/activity" /> */}
+                </div>
+              </div>
       </div>
     </div>
   )
@@ -267,6 +286,23 @@ const FormField = ({
 
       {note && <p className="field-note">{note}</p>}
     </div>
+  )
+}
+
+const ActionButton = ({ icon, title, description, link }) => {
+  return (
+    <Link to={link} className="action-button">
+      <div className="action-icon">
+        <span>{icon}</span>
+      </div>
+      <div className="action-content">
+        <h4 className="action-title">{title}</h4>
+        <p className="action-description">{description}</p>
+      </div>
+      <div className="action-arrow">
+        <span>→</span>
+      </div>
+    </Link>
   )
 }
 
