@@ -22,15 +22,19 @@ const Profile = () => {
     async function getUserData() {
       const data = await getUser()
       console.log(data)
-
-      setProfile(data)
+  
+      if (data) {
+        setProfile(data)
+        await dispatch(SET_USER(data))
+        await dispatch(SET_NAME(data.name))
+      } else {
+        setProfile(null)
+      }
       setIsLoading(false)
-      await dispatch(SET_USER(data))
-      await dispatch(SET_NAME(data.name))
     }
     getUserData()
   }, [dispatch])
-
+  
   return (
     <div className="profile-page">
       {/* Page Header
@@ -76,9 +80,9 @@ const Profile = () => {
                 <div className="profile-info">
                   <h2 className="profile-name">{profile?.name || "User Name"}</h2>
                   <p className="profile-email">{profile?.email || "user@example.com"}</p>
-                  <div className="profile-status">
+                  {/* <div className="profile-status">
                     <span className="status-badge status-active">Active</span>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="profile-actions">
                   <Link to="/edit-profile">
@@ -94,10 +98,10 @@ const Profile = () => {
               <div className="profile-details">
                 <h3 className="details-title">Profile Information</h3>
                 <div className="details-grid">
-                  <ProfileField icon="👤" label="Full Name" value={profile?.name || "Not provided"} />
-                  <ProfileField icon="📧" label="Email Address" value={profile?.email || "Not provided"} />
-                  <ProfileField icon="📱" label="Phone Number" value={profile?.phone || "Not provided"} />
-                  <ProfileField icon="📝" label="Bio" value={profile?.bio || "No bio available"} isLarge />
+                  <ProfileField  label="Full Name" value={profile?.name || "Not provided"} />
+                  <ProfileField label="Email Address" value={profile?.email || "Not provided"} />
+                  <ProfileField label="Phone Number" value={profile?.phone || "Not provided"} />
+                  <ProfileField label="Bio" value={profile?.bio || "No bio available"} isLarge />
                 </div>
               </div>
 
@@ -108,7 +112,7 @@ const Profile = () => {
                 <ActionButton
                   title="Change Password"
                   description="Update your account password"
-                  link="/changePassword"
+                  link="/change-password"
                 />
                   {/* <ActionButton
                     icon="🔔"
