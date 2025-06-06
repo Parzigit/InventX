@@ -1,65 +1,83 @@
-import React, { useState } from "react";
-import {MdKeyboardArrowDown } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+"use client"
 
-const activeLink = ({ isActive }) => (isActive ? "active" : "link");
-const activeSublink = ({ isActive }) => (isActive ? "active" : "link");
+import { useState } from "react"
+import { NavLink } from "react-router-dom"
+// import "./SidebarItem.scss"
 
 const SidebarItem = ({ item, isOpen }) => {
-  const [expandMenu, setExpandMenu] = useState(false);
+  const [expandMenu, setExpandMenu] = useState(false)
 
   if (item.childrens) {
     return (
-      <div
-        className={
-          expandMenu ? "sidebar-item s-parent open" : "sidebar-item s-parent"
-        }
-      >
-        <div className="sidebar-title">
+      <div className={`sidebar-item s-parent ${expandMenu ? "open" : ""}`}>
+        <div className="sidebar-title" onClick={() => setExpandMenu(!expandMenu)}>
           <span>
-            {item.icon && <div className="icon">{item.icon}</div>}
-            {isOpen && <div>{item.title}</div>}
+            <div className="icon">{item.icon}</div>
+            {isOpen && <span className="title-text">{item.title}</span>}
           </span>
-          <MdKeyboardArrowDown
-            size={28}
-            className="arrow-icon"
-            onClick={() => setExpandMenu(!expandMenu)}
-          />
+          {isOpen && (
+            <div className={`arrow-icon ${expandMenu ? "expanded" : ""}`}>
+              <span>▶</span>
+            </div>
+          )}
         </div>
-        <div className="sidebar-content">
-          {item.childrens.map((child, index) => {
-            return (
-              <div key={index} className="s-child">
-                <NavLink to={child.path} className={activeSublink}>
-                  <div className="sidebar-item">
-                    <div className="sidebar-title">
-                      <span>
-                        {child.icon && <div className="icon">{child.icon}</div>}
-                        {isOpen && <div>{child.title}</div>}
-                      </span>
-                    </div>
+        {expandMenu && (
+          <div className="sidebar-content">
+            {item.childrens.map((child, index) => (
+              <div key={index} className="sidebar-item s-child">
+                <NavLink to={child.path} className={({ isActive }) => (isActive ? "active" : "")}>
+                  <div className="sidebar-title">
+                    <span>
+                      <div className="icon">{child.icon}</div>
+                      {isOpen && <span className="title-text">{child.title}</span>}
+                    </span>
                   </div>
                 </NavLink>
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        )}
+        {!isOpen && (
+          <div className="sidebar-tooltip">
+            <div className="tooltip-content">
+              {/* <div className="tooltip-title">{item.title}</div> */}
+              <div className="tooltip-children">
+                {item.childrens.map((child, index) => (
+                  <NavLink
+                    key={index}
+                    to={child.path}
+                    className={({ isActive }) => `tooltip-child ${isActive ? "active" : ""}`}
+                  >
+                    {/* <div className="child-icon">{child.icon}</div> */}
+                    {/* <span>{child.title}</span> */}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-    );
+    )
   } else {
     return (
-      <NavLink to={item.path} className={activeLink}>
-        <div className="sidebar-item s-parent">
+      <div className="sidebar-item">
+        <NavLink to={item.path} className={({ isActive }) => (isActive ? "active" : "")}>
           <div className="sidebar-title">
             <span>
-              {item.icon && <div className="icon">{item.icon}</div>}
-              {isOpen && <div>{item.title}</div>}
+              <div className="icon">{item.icon}</div>
+              {isOpen && <span className="title-text">{item.title}</span>}
             </span>
           </div>
-        </div>
-      </NavLink>
-    );
+        </NavLink>
+        {!isOpen && (
+          <div className="sidebar-tooltip">
+            <div className="tooltip-content">
+            </div>
+          </div>
+        )}
+      </div>
+    )
   }
-};
+}
 
-export default SidebarItem;
+export default SidebarItem
