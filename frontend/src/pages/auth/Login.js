@@ -60,7 +60,7 @@ const Login = () => {
       <Card>
         <div className={styles.form}>
           <div className="--flex-center">
-            <BiLogIn size={45} color="#000" />
+            {/* <BiLogIn size={45} color="#000" /> */}
           </div>
           <h2><div style={{color:'red'}}>Login</div></h2>
 
@@ -86,7 +86,7 @@ const Login = () => {
             </button>
           </form>
           <br></br>
-          <Link to="/forgot"><div style={{color:'red'}}>Forgot Password?</div></Link>
+          <Link to="/forgot"><div style={{color:'red' ,padding:'0 2rem'}}>Forgot Password?</div></Link>
 
           <span className={styles.register}>
           <Link to="/">Home</Link>
