@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
-import "./ProductSummary.scss";
-import { AiFillDollarCircle } from "react-icons/ai";
-import { BsCart4, BsCartX } from "react-icons/bs";
-import { BiCategory } from "react-icons/bi";
-import InfoBox from "../../infoBox/InfoBox";
-import { useDispatch, useSelector } from "react-redux";
+"use client"
+
+import { useEffect } from "react"
+import "./ProductSummary.scss"
+import { AiFillDollarCircle } from "react-icons/ai"
+import { BsCart4, BsCartX } from "react-icons/bs"
+import { BiCategory } from "react-icons/bi"
+import InfoBox from "../../infoBox/InfoBox"
+import { useDispatch, useSelector } from "react-redux"
 import {
   CALC_CATEGORY,
   CALC_OUTOFSTOCK,
@@ -12,60 +14,42 @@ import {
   selectCategory,
   selectOutOfStock,
   selectTotalStoreValue,
-} from "../../../redux/features/product/productSlice";
+} from "../../../redux/features/product/productSlice"
 
-const moni = <AiFillDollarCircle size={35}/>;
-const prodIcon = <BsCart4 size={35}  />;
-const catIcon = <BiCategory size={35} />;
-const oopsIcon = <BsCartX size={35}  />;
-
-export const formatNumbers = (x) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
+// Icons
+const productIcon = <BsCart4 size={30} color="#0078d4" />
+const categoryIcon = <BiCategory size={30} color="#0078d4" />
+const outOfStockIcon = <BsCartX size={30} color="#f44336" />
+const earningIcon = <AiFillDollarCircle size={30} color="#4caf50" />
 
 const ProductSummary = ({ products }) => {
-  const dispatch = useDispatch();
-  const totalStoreValue = useSelector(selectTotalStoreValue);
-  const outOfStock = useSelector(selectOutOfStock);
-  const category = useSelector(selectCategory);
+  const dispatch = useDispatch()
+  const totalStoreValue = useSelector(selectTotalStoreValue)
+  const outOfStock = useSelector(selectOutOfStock)
+  const category = useSelector(selectCategory)
 
   useEffect(() => {
-    dispatch(CALC_STORE_VALUE(products));
-    dispatch(CALC_OUTOFSTOCK(products));
-    dispatch(CALC_CATEGORY(products));
-  }, [dispatch, products]);
+    dispatch(CALC_STORE_VALUE(products))
+    dispatch(CALC_OUTOFSTOCK(products))
+    dispatch(CALC_CATEGORY(products))
+  }, [dispatch, products])
 
   return (
     <div className="product-summary">
-      <h3 className="--mt">Summary</h3>
+      <h3>Inventory Stats</h3>
       <div className="info-summary">
+        <InfoBox icon={productIcon} title={"Total Products"} count={products.length} bgColor="card1" />
         <InfoBox
-          icon={prodIcon}
-          title={"Total Products"}
-          count={products.length}
-          bgColor="card1"
-        />
-        <InfoBox
-          icon={moni}
+          icon={earningIcon}
           title={"Total Store Value"}
-          count={`$${formatNumbers(totalStoreValue.toFixed(2))}  `}
+          count={`$${totalStoreValue.toFixed(2)}`}
           bgColor="card2"
         />
-        <InfoBox
-          icon={oopsIcon}
-          title={"Out of Stock"}
-          count={outOfStock}
-          bgColor="card3"
-        />
-        <InfoBox
-          icon={catIcon}
-          title={"All Categories"}
-          count={category.length}
-          bgColor="card4"
-        />
+        <InfoBox icon={outOfStockIcon} title={"Out of Stock"} count={outOfStock} bgColor="card3" />
+        <InfoBox icon={categoryIcon} title={"All Categories"} count={category.length} bgColor="card4" />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductSummary;
+export default ProductSummary
