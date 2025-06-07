@@ -40,9 +40,9 @@
   .form {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 350px;
-    max-width: 800px;
+    max-width: 1200px;
     padding: 0;
-    border-radius: 16px;
+    border-radius: 8px;
     background: var(--background);
     box-shadow: var(--shadow-card);
     overflow: hidden;
@@ -64,7 +64,7 @@
     }
 
     h2 {
-      font-size: 2rem;
+      font-size: 1.85rem;
       font-weight: 600;
       color: var(--text-primary);
       text-align: center;
@@ -74,7 +74,7 @@
 
     // Add subtitle after h2
     h2 + * {
-      font-size: 1.375rem;
+      font-size: 1.115rem;
       color: var(--text-secondary);
       text-align: center;
       margin-bottom: 2rem;
@@ -88,7 +88,7 @@
       input[type="email"],
       input[type="password"] {
         display: block;
-        font-size: 1.45em;
+        font-size: 1.35em;
         font-weight: 400;
         padding: 1.5rem 2rem;
         margin: 0.8rem 0;
