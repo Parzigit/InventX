@@ -6,12 +6,12 @@ import menu from "../../data/sidebar"
 import SidebarItem from "./SidebarItem"
 
 const Sidebar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   const toggle = () => setIsOpen(!isOpen)
 
   return (
     <div className="layout">
-      <div className="sidebar" style={{ width: isOpen ? "230px" : "60px" }}>
+      <div className="sidebar" style={{ width: isOpen ? "180px" : "60px" }}>
         <div className="top_section">
           <div
             className="logo"
@@ -27,8 +27,8 @@ const Sidebar = ({ children }) => {
               alt="logo"
               style={{
                 cursor: "pointer",
-                width: "35px",
-                height: "35px",
+                width: "60px",
+                height: "60px",
                 objectFit: "contain",
               }}
               onClick={toggle}
@@ -44,7 +44,7 @@ const Sidebar = ({ children }) => {
 
       <main
         style={{
-          paddingLeft: isOpen ? "230px" : "60px",
+          paddingLeft: isOpen ? "168px" : "60px",
           transition: "all .3s",
           width: "100%",
         }}
