@@ -68,7 +68,7 @@ const Register = () => {
       <Card>
         <div className={styles.form}>
           <div className="--flex-center">
-            <TiUserAddOutline size={45} color="#000" />
+            {/* <TiUserAddOutline size={45} color="#000" /> */}
           </div>
           <h2><div style={{color:'blue'}}>Register</div></h2>
 
@@ -111,9 +111,9 @@ const Register = () => {
           </form>
 
           <span className={styles.register}>
-            <Link to="/">Home</Link>
-            <p> &nbsp; Already have an account? &nbsp;</p>
-            <Link to="/login"><div style={{color:'red'}}>Login</div></Link>
+          <Link to="/"><h3 style={{color:'Grey',padding:'0rem 2rem'}}>Home</h3></Link>
+          {/* <p style={{color:'Black',padding:'2rem 0 2rem'}}> &nbsp; Already have an account? &nbsp;</p> */}
+          <Link to="/login" ><div ><h3 style={{color:'Red',padding:'0 2rem'}}>Login</h3></div></Link>
           </span>
         </div>
       </Card>
