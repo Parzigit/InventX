@@ -85,13 +85,13 @@ const Login = () => {
               Login
             </button>
           </form>
-          <br></br>
-          <Link to="/forgot"><div style={{color:'red' ,padding:'0 2rem'}}>Forgot Password?</div></Link>
+          {/* <br></br> */}
+          <Link to="/forgot"><div ><h4 style={{color:'red' ,padding:'0 2rem'}}>Forgot Password?</h4></div></Link>
 
           <span className={styles.register}>
-          <Link to="/">Home</Link>
-            <p> &nbsp; New here? &nbsp;</p>
-            <Link to="/register" ><div style={{color:'blue'}}>Register</div></Link>
+          <Link to="/"><h3 style={{color:'Grey',padding:'0 2rem'}}>Home</h3></Link>
+            {/* <p style={{color:'red' ,padding:'2rem 0rem -1rem'}}> &nbsp; New here? &nbsp;</p> */}
+            <Link to="/register" ><div ><h3 style={{color:'blue',padding:'0 2rem'}}>Register</h3></div></Link>
           </span>
         </div>
       </Card>
