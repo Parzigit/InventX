@@ -47,7 +47,10 @@ const Profile = () => {
           <p className="page-subtitle">Manage your account information and preferences</p>
         </div>
       </div> */}
-
+      <br>
+      </br>
+      <br>
+      </br>
       {/* Profile Content */}
       <div className="profile-content">
         {isLoading && (
