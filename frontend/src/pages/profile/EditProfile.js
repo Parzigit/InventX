@@ -106,7 +106,10 @@ const EditProfile = () => {
           <p className="page-subtitle">Update your personal information and preferences</p>
         </div>
       </div> */}
-
+       <br>
+      </br>
+      <br>
+      </br>
       {/* Edit Profile Content */}
       <div className="edit-profile-content">
         {isLoading && (
