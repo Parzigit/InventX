@@ -8,11 +8,11 @@ A full-stack warehouse management system built using the **MERN stack** (MongoDB
 
 ## 📦 Features
 
-- Add, update, and delete inventory items
+- Add, update, view and delete inventory items
 - Track stock quantities in real time
 - JWT-based secure authentication
 - MongoDB cloud database integration
-- Responsive frontend built with React
+- Responsive frontend built with React, Tailwind
 
 ---
 ## Installation
